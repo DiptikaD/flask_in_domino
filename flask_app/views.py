@@ -1,15 +1,18 @@
 from flask_app import app
 from flask_app.getProjects import getProjects
-from flask import jsonify
-from flask import Flask
+from flask import jsonify, send_from_directory
+import os
 
-	# hardcoding the project id as the static url
-app = Flask(__name__, static_url_path='/modelproducts/67a52df95b902c4c38746378')
-
-#@app.route('/')
-#def index():
-#    return "Hello World!"
+STATIC_FOLDER = os.path.join(os.path.dirname(__file__), 'static')
 
 @app.route('/')
+def index():
+   return "Hello World!"
+
+@app.route('/projects')
 def projects():
 	return jsonify(getProjects())
+
+@app.route('/picture')
+def image():
+   return send_from_directory(STATIC_FOLDER, 'sheep_pose.jpg')
