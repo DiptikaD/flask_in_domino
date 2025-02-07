@@ -3,7 +3,7 @@ from flask_app.getProjects import getProjects
 from flask import jsonify, send_from_directory
 import os
 
-STATIC_FOLDER = os.path.join(os.path.dirname(__file__), 'static')
+STATIC_FOLDER = os.path.join(os.path.dirname(__file__), 'templates')
 
 @app.route('/')
 def index():
